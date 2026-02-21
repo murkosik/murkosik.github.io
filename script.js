@@ -1,41 +1,63 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+const output = document.getElementById('output');
+
+// Список сообщений
+const hackerMessages = [
+    'Virus initialization...',
+    'System breach initiated...',
+    'Connecting to server...',
+    'Port scanning in progress...',
+    'Vulnerability detected...',
+    'Exploit loading...',
+    'Access granted!',
+    'Data encryption...',
+    'Log deletion...',
+    'Operation complete...',
+    'System compromised!',
+    'Malicious code execution...',
+    'Control hijack...',
+    'Data copying...',
+    'Trace masking...',
+    'Firewall bypass attempt...',
+    'Root access acquired!',
+    'Database dumping...',
+    'Security protocols disabled...',
+    'Backdoor installation...'
+];
+
+let simulationInterval;
+
+// Функция добавления сообщения
+function addMessage(message) {
+    const timestamp = new Date().toLocaleTimeString();
+    output.innerHTML += `[${timestamp}] ${message}\n`;
+    // Прокрутка вниз
+    setTimeout(() => {
+        output.scrollTop = output.scrollHeight;
+    }, 0);
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    color: #0f0;
-    font-family: 'Courier New', monospace;
-    overflow: hidden;
+// Запуск симуляции
+function startSimulation() {
+    // Случайное сообщение
+    const randomMessage = hackerMessages[Math.floor(Math.random() * hackerMessages.length)];
+    addMessage(randomMessage);
+
+    // Следующий вызов через случайное время (100–500 мс)
+    simulationInterval = setTimeout(startSimulation, Math.random() * 400 + 100);
 }
 
-#terminal {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    // Приветственное сообщение
+    addMessage('Welcome to the Hacker Console!');
+    addMessage('Automatic hacking simulation started...');
+    addMessage('Initializing system breach...');
 
-#output {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    font-size: 14px;
-    line-height: 1.4;
-}
+    // Запуск симуляции
+    startSimulation();
+});
 
-/* Стили скроллбара */
-#output::-webkit-scrollbar {
-    width: 8px;
-}
-#output::-webkit-scrollbar-track {
-    background: #000;
-}
-#output::-webkit-scrollbar-thumb {
-    background: #0f0;
-}
+// Остановка при закрытии страницы
+window.addEventListener('beforeunload', function() {
+    clearTimeout(simulationInterval);
+});
