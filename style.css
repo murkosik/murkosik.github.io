@@ -115,3 +115,40 @@ body {
     0%, 100% { border-right: 2px solid #0f0; }
     50% { border-right: 2px solid transparent; }
 }
+
+/* CSS‑переменные для тем */
+:root {
+    --bg-color: #000;
+    --text-color: #0f0;
+    --key-bg: #111;
+    --key-border: #0f0;
+}
+
+/* Поддержка тем */
+body.hacker {
+    --bg-color: #000;
+    --text-color: #0f0;
+    --key-bg: #111;
+    --key-border: #0f0;
+}
+
+body.dark {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --key-bg: #2d2d2d;
+    --key-border: #404040;
+}
+
+body.matrix {
+    --bg-color: #000;
+    --text-color: #0f0;
+    --key-bg: #020;
+    --key-border: #0f0;
+}
+
+body.cyber {
+    --bg-color: #0a0a1a;
+    --text-color: #00f;
+    --key-bg: #1a1a2a;
+    --key-border: #00f;
+}
